@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  jenkins:
+    privileged: true
+    user: root
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+     - 8080:8080
+     - 50000:50000
+    container_name: jenkins_jcasc
+    volumes:
+     - /var/run/docker.sock:/var/run/docker.sock
+     - ./jenkins_home:/var/jenkins_home
+     - ./jcasc:/var/jcasc
+     - ./plugins:/var/plugins
+    environment:
+     - CASC_JENKINS_CONFIG=/var/jcasc
+     - DOCKER_HOST=tcp://socat:2375
+    links:
+      - socat
+
+  socat:
+     image: bpack/socat
+     command: TCP4-LISTEN:2375,fork,reuseaddr UNIX-CONNECT:/var/run/docker.sock
+     volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+     expose:
+        - "2375"

@@ -1,0 +1,3 @@
+configuration-as-code:1569.vb_72405b_80249
+blueocean:1.26.0
+docker-plugin:1.2.10
