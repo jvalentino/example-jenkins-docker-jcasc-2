@@ -32,7 +32,7 @@ jenkins:
         dockerTemplateBase:
           cpuPeriod: 0
           cpuQuota: 0
-          image: "jvalentino2/jenkins-agent-docker:1.0"
+          image: "jvalentino2/jenkins-agent-docker:latest"
           privileged: true
         labelString: "docker"
         pullStrategy: PULL_ALWAYS
