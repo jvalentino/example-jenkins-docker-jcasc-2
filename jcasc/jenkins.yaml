@@ -37,6 +37,50 @@ jenkins:
         labelString: "docker"
         pullStrategy: PULL_ALWAYS
         pullTimeout: 300
+      - connector:
+          attach:
+            user: "root"
+        dockerTemplateBase:
+          cpuPeriod: 0
+          cpuQuota: 0
+          image: "jvalentino2/jenkins-agent-maven:latest"
+          privileged: true
+        labelString: "maven"
+        pullStrategy: PULL_ALWAYS
+        pullTimeout: 300  
+      - connector:
+          attach:
+            user: "root"
+        dockerTemplateBase:
+          cpuPeriod: 0
+          cpuQuota: 0
+          image: "jvalentino2/jenkins-agent-gradle:latest"
+          privileged: true
+        labelString: "gradle"
+        pullStrategy: PULL_ALWAYS
+        pullTimeout: 300  
+      - connector:
+          attach:
+            user: "root"
+        dockerTemplateBase:
+          cpuPeriod: 0
+          cpuQuota: 0
+          image: "jvalentino2/jenkins-agent-npm:latest"
+          privileged: true
+        labelString: "npm"
+        pullStrategy: PULL_ALWAYS
+        pullTimeout: 300
+      - connector:
+          attach:
+            user: "root"
+        dockerTemplateBase:
+          cpuPeriod: 0
+          cpuQuota: 0
+          image: "jvalentino2/jenkins-agent-pyb:latest"
+          privileged: true
+        labelString: "pyb"
+        pullStrategy: PULL_ALWAYS
+        pullTimeout: 300
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
